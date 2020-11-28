@@ -24,6 +24,7 @@ $user = array_shift($result);
 
 if($user['username'] === $username && $user['password'] === $password){
     $_SESSION['username'] = $user['username'];
+    $_SESSION['id'] = $user['id'];
     header('Location: index.php');
 } else {
     die('Incorrect username or password!');
