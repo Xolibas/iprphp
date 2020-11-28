@@ -12,7 +12,7 @@ if (empty($data['username']) || empty($data['password']))
 }
 
 $username = $data['username'];
-$password = $data['password'];
+$password = sha1($data['password']);
 
 $statement = $connection->prepare('SELECT * FROM users WHERE username = :username');
 $statement->execute(['username'=> $username]);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 28 2020 г., 21:27
+-- Время создания: Ноя 29 2020 г., 02:35
 -- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -28,36 +28,24 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `posts` (
-  `id` int(11) NOT NULL,
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `text` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `posts`
 --
 
-INSERT INTO `posts` (`id`, `title`, `text`, `status`, `user_id`) VALUES
-(4, 'awfawf', 'awfawf', 0, 2),
-(9, 'awfawf', 'awfawf', 0, 4),
-(11, 'awfawf', 'awfawf', 0, 1),
-(12, 'awfawf', 'awfawf', 1, 2),
-(13, 'awfawf', 'awfawf', 0, 2),
-(14, 'awfawf', 'awfawf', 0, 2),
-(15, 'awfawfawf', 'awfawfawfwaf', 0, 1),
-(16, 'awfawf', 'awfwa', 0, 1),
-(26, 'awfawf', 'awfwa', 0, 1),
-(27, 'awfwa', 'awfwa', 0, 1),
-(28, 'aaaa', 'aaaa', 0, 1),
-(29, 'CSACSACWAWC', 'AWAWDAWFAWFWA', 0, 1),
-(30, 'awfaw', 'wafwaf', 1, 1),
-(31, 'awfaw', 'wafwaf', 1, 1),
-(32, 'awfawf', 'awfawf', 1, 1),
-(33, 'nbnn', 'nbnn', 0, 1),
-(34, 'gdg', 'gdga', 0, 1),
-(35, 'gggg', 'ggggg', 1, 1);
+INSERT INTO `posts` (`id`, `title`, `text`, `status`, `user_id`, `created_at`, `updated_at`) VALUES
+('5fc2d32077560', 'awgwa', 'awgawg', 1, 8, '2029-11-20 01:45:52', NULL),
+('5fc2d422c18bf', 'awgwa', 'awgawg', 1, 8, '2029-11-20 01:50:10', NULL),
+('5fc2db577a688', 'gawgwaga', 'ggggggggggggggggggggggg', 1, 8, '2029-11-20 02:20:55', NULL),
+('5fc2dbd949ca1', 'awfawf', 'awfwa', 1, 8, '2029-11-20 02:23:05', NULL);
 
 -- --------------------------------------------------------
 
@@ -77,12 +65,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`) VALUES
-(1, 'Xolibas', 'tilo098', 'andriy.xolibas@gmail.com'),
-(2, 'awf', '11111111', 'awf'),
-(4, 'awfaDGDG', 'aA1AAAAAAA', 'sfh'),
-(5, 'afgdag', 'aA1111111', 'agawgwa'),
-(6, 'afgda', 'aA1111111', 'agawgawgwag'),
-(7, 'gawwagwa', 'aA1111111', 'awgawg');
+(8, 'XolibasInc', '6273014eff1ac5866d5317dd1c3ba4b234b45929', 'andriy.xolibas@gmail.coma');
 
 --
 -- Индексы сохранённых таблиц
@@ -106,16 +89,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT для таблицы `posts`
---
-ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

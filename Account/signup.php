@@ -42,13 +42,13 @@ if($statement){
         exit;
     }
 }
-
+$password = sha1($data['password']);
 $statement = $connection->prepare('INSERT INTO users (username, email, password) VALUES (:username, :email, :password)');
 if($statement){
     $result = $statement->execute([
         ':username' => $data['username'],
         ':email' => $data['email'],
-        ':password' => $data['password'],
+        ':password' => $password,
     ]);
 
     if($result){
