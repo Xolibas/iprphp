@@ -3,7 +3,7 @@ if (empty($_SESSION['username'])) {
     session_destroy();
     session_start();
     $_SESSION['messages'][] = 'You must login to do this.';
-    header('Location: loginf.php');
+    header('Location: ../Account/loginf.php');
     exit;
   }
 require('../header.php');

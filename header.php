@@ -10,15 +10,15 @@
         <?php
             if(empty($_SESSION['username']))
             {
-                echo '<a href="../loginf.php" class="header-text">Login</a>
-                <a href="../register.php" class="header-text">Register</a>';
+                echo '<a href="../Account/loginf.php" class="header-text">Login</a>
+                <a href="../Account/register.php" class="header-text">Register</a>';
             }
             else
             {
                 echo '<a href="../Posts/myposts.php" class="header-text">My posts</a>
                 <a href="../Posts/create.php" class="header-text">Create post</a>
                 <a class="header-text">Welcome, '.$_SESSION["username"].'</a>
-                <a href="../logout.php" class="header-text">Logout</a>';
+                <a href="../Account/logout.php" class="header-text">Logout</a>';
             }
         ?>
         </div>

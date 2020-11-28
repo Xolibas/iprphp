@@ -1,9 +1,9 @@
 <?php session_start();
 if (!empty($_SESSION['username'])) {
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit;
   }
-  require_once('header.php');
+  require_once('../header.php');
 ?>
 <html lang="en">
     <head>
@@ -18,5 +18,5 @@ if (!empty($_SESSION['username'])) {
             <input type="submit" value="Login" />
         </form> 
     </body>
-    <?php require_once('footer.php'); ?>
+    <?php require_once('../footer.php'); ?>
 </html>

@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require('db.php');
+require('../db.php');
 $data = $_POST;
 
 if (empty($data['username']) ||
