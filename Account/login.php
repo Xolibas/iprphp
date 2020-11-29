@@ -19,7 +19,7 @@ $statement->execute(['username'=> $username]);
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 if (empty($result)){
-    $_SESSION['messages'][] = 'No user with this username!';
+    $_SESSION['messages'][] = 'No user with this username or password!';
     header('Location: loginf.php');
     exit;
 }

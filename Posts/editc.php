@@ -22,7 +22,7 @@
 
                 if($result){
                     $_SESSION['messages'][] = 'Post is succesfully modified.';
-                    header('Location: edit.php?id='.$id);
+                    header('Location: myposts.php');
                     exit; 
                 }
             }

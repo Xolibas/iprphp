@@ -1,7 +1,5 @@
 <?php session_start();
 if (empty($_SESSION['username'])) {
-    session_destroy();
-    session_start();
     $_SESSION['messages'][] = 'You must login to do this.';
     header('Location: ../Account/loginf.php');
     exit;
@@ -23,7 +21,7 @@ require('../db.php');
                 $statement = $connection->prepare("SELECT title, posts.id AS id, text FROM posts INNER JOIN users ON posts.user_id = users.id WHERE users.username = '".$_SESSION['username']."' LIMIT $start, $num");
                 $statement->execute();
             }
-            else echo"There is no posts.";
+            else $_SESSION['messages'][] = "There is no posts.";
         ?>
     </body>
 </html>

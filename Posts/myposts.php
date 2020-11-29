@@ -1,7 +1,7 @@
 <?php
     session_start();
-    require('../header.php');
     require('mypostsc.php');
+    require('../header.php');
 ?>
 <html lang="en">
     <head>

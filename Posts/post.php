@@ -1,7 +1,8 @@
 <?php
     session_start();
-    require('../header.php');
     require('postc.php');
+    require('../header.php');
+    require('sharing.php');  
 ?>
     <table>
         <tr><td colspan = '3'>Title</td></tr>
@@ -18,6 +19,6 @@
         <a href=". socialsharingbuttons('whatsapp', $params) ." target='_blank'>Whatsapp</a> | 
         <a href=". socialsharingbuttons('linkedin', $params) ." target='_blank'>Linkedin</a> |
         <a href=". socialsharingbuttons('telegram', $params) ." target='_blank'>Telegram</a> |";
-    }  
+    }
     require_once('../footer.php');
 ?>
