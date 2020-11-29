@@ -5,7 +5,6 @@
     try{
         $connection = new PDO($dsn,$dbUser,$dbPassword);
     } catch (PDOException $exception) {
-        header('Location: register.php');
-        exit;
+        die ('Connection failed: '.$exception->getMessage());
     }
     

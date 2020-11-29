@@ -6,22 +6,32 @@ if (empty($_SESSION['username'])) {
   }
 require('../db.php'); 
 ?>
-        <?php
-            $statement = $connection->prepare("SELECT COUNT(*) FROM posts INNER JOIN users ON posts.user_id = users.id WHERE users.username = '".$_SESSION['username']."'");
+<?php
+    $total;
+    function getPosts(int $num)
+    {
+        global $connection;
+        $id = $_SESSION['id'];
+        $statement = $connection->prepare("SELECT COUNT(*) FROM posts WHERE posts.user_id = ".$id);
+        $statement->execute();
+        $posts = $statement->fetchColumn();
+        if($posts!=0){
+            $page = $_GET['page'];
+            global $total;
+            $total = (int)(($posts - 1) / $num) + 1;
+            $page = (int)($page);
+            if(empty($page) or $page < 0) $page = 1;
+            if($page > $total) $page = $total;
+            $start = $page * $num - $num;
+            $statement = $connection->prepare("SELECT title, posts.id AS id, text FROM posts INNER JOIN users ON posts.user_id = users.id WHERE users.username = '".$_SESSION['username']."' LIMIT $start, $num");
             $statement->execute();
-            $posts = $statement->fetchColumn();
-            if($posts!=0){
-                $num = 10;
-                $page = $_GET['page'];
-                $total = (int)(($posts - 1) / $num) + 1;
-                $page = (int)($page);
-                if(empty($page) or $page < 0) $page = 1;
-                if($page > $total) $page = $total;
-                $start = $page * $num - $num;
-                $statement = $connection->prepare("SELECT title, posts.id AS id, text FROM posts INNER JOIN users ON posts.user_id = users.id WHERE users.username = '".$_SESSION['username']."' LIMIT $start, $num");
-                $statement->execute();
-            }
-            else $_SESSION['messages'][] = "There is no posts.";
-        ?>
-    </body>
-</html>
+            $posts = $statement->fetchAll();
+            return $posts;
+        }
+        else
+        { 
+            $_SESSION['messages'][] = 'There is no posts';
+            return null;
+        }
+    }
+?>
